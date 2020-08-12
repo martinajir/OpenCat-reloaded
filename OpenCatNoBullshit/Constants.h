@@ -92,7 +92,27 @@ int8_t servoCalibs[DOF] = {};
 char currentAng[DOF] = {};
 int calibratedDuty0[DOF] = {};
 
-
+// balancing parameters
+#define ROLL_LEVEL_TOLERANCE 2//the body is still considered as level, no angle adjustment
+#define PITCH_LEVEL_TOLERANCE 1
+float levelTolerance[2] = {ROLL_LEVEL_TOLERANCE * radPerDeg, PITCH_LEVEL_TOLERANCE * radPerDeg}; //the body is still considered as level, no angle adjustment
+#define LARGE_PITCH 75
+//the following coefficients will be divided by 10.0 in the adjust() function. so (float) 0.1 can be saved as (int8_t) 1
+//this trick allows using int8_t array insead of float array, saving 96 bytes and allows storage on EEPROM
+#define panF 60
+#define tiltF 60
+#define sRF 50   //shoulder roll factor
+#define sPF 12 //shoulder pitch factor
+#define uRF 30 //upper leg roll factor
+#define uPF 30 //upper leg pitch factor
+#define lRF (-1.5*uRF) //lower leg roll factor 
+#define lPF (-1.5*uPF)//lower leg pitch factor
+#define LEFT_RIGHT_FACTOR 2
+#define FRONT_BACK_FACTOR 2
+#define POSTURE_WALKING_FACTOR 0.5
+#ifdef POSTURE_WALKING_FACTOR
+float postureOrWalkingFactor;
+#endif
 
 
 //numerical constants

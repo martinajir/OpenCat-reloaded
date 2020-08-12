@@ -79,3 +79,23 @@ void copyDataFromPgmToEeprom(unsigned int &eeAddress, unsigned int pgmAddress) {
   }
   //PTLF("finish copying to I2C EEPROM");
 }
+
+inline byte pin(byte idx) {
+  return EEPROM.read(PIN + idx);
+}
+inline byte remapPin(byte offset, byte idx) {
+  return EEPROM.read(offset + idx);
+}
+inline byte servoAngleRange(byte idx) {
+  return EEPROM.read(SERVO_ANGLE_RANGE + idx);
+}
+inline int8_t middleShift(byte idx) {
+  return EEPROM.read( MID_SHIFT + idx);
+}
+
+inline int8_t rotationDirection(byte idx) {
+  return EEPROM.read(ROTATION_DIRECTION + idx);
+}
+inline int8_t servoCalib(byte idx) {
+  return EEPROM.read( CALIB + idx);
+}
