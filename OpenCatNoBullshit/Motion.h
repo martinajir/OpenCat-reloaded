@@ -112,6 +112,11 @@ class Motion {
       loadDataByOnboardEepromAddress(onBoardEepromAddress);
     }
 
+    /*    void loadBySkillPtr(Skill* sk) {//obsolete. get lookup information from a skill pointer and read the data array from storage
+          loadDataByOnboardEepromAddress(sk->onBoardEepromAddress);
+        }
+    */
+
     void info() {
       PTL("period: " + String(period) + ",\tdelayBetweenFrames: " + ",\texpected (pitch,roll): (" + expectedRollPitch[0]*degPerRad + "," + expectedRollPitch[1]*degPerRad + ")");
       for (int k = 0; k < period * (period > 1 ? WALKING_DOF : 16); k++) {

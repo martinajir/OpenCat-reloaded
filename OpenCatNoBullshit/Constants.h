@@ -114,6 +114,12 @@ float levelTolerance[2] = {ROLL_LEVEL_TOLERANCE * radPerDeg, PITCH_LEVEL_TOLERAN
 float postureOrWalkingFactor;
 #endif
 
+int8_t adaptiveParameterArray[16][NUM_ADAPT_PARAM] = {
+  { -panF, 0}, { -panF / 2, -tiltF}, { -2 * panF, 0}, {0, 0},
+  {sRF, -sPF}, { -sRF, -sPF}, { -sRF, sPF}, {sRF, sPF},
+  {uRF, uPF}, {uRF, uPF}, {uRF, uPF}, {uRF, uPF},
+  {lRF, lPF}, {lRF, lPF}, {lRF, lPF}, {lRF, lPF}
+};
 
 //numerical constants
 #define M_PI 3.1415926535
