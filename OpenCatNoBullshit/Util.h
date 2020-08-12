@@ -41,7 +41,7 @@ int EEPROMReadInt(int p_address)
 
 //This function returns true if trying to access overflowing address
 bool isEEPROMOverflowing(unsigned int &eeAddress) {
-  if (eeAddress == EEPROM_SIZE) {
+  if(eeAddress == EEPROM_SIZE) {
     PTL();
     PTL("I2C EEPROM overflow! You must reduce the size of your instincts file!\n");
     EEPROMOverflow = true;
